@@ -1,73 +1,107 @@
-# React + TypeScript + Vite
+# Generador de Colores (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto de ejemplo creado para practicar conceptos fundamentales de React como `useState`, `useEffect` y el manejo de datos persistentes con `localStorage`.  
+La aplicación permite generar colores aleatorios en formato hexadecimal, guardarlos, copiarlos y eliminarlos fácilmente.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧠 Objetivo
 
-## React Compiler
+Permitir al usuario generar colores aleatorios y gestionarlos en una paleta personal con persistencia local.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Funcionalidades principales
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Generar colores aleatorios**:  
+  - Cada clic genera un color en formato hexadecimal (`#RRGGBB`).  
+  - El color se muestra visualmente en un contenedor.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Guardar colores**:  
+  - Los colores generados se pueden guardar con un clic.  
+  - Los colores se almacenan en `localStorage` para mantenerlos al recargar la página.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Copiar colores**:  
+  - Al hacer clic en un color guardado, se copia automáticamente al portapapeles.  
+  - Se muestra una notificación confirmando la copia.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Eliminar colores**:  
+  - Cada color guardado puede eliminarse individualmente mediante un botón ❌.
+
+- **Persistencia automática**:  
+  - Los colores guardados permanecen incluso tras cerrar o recargar la aplicación.
+
+---
+
+## 🧩 Funcionalidades adicionales (bonus)
+
+- **Notificaciones visuales**:  
+  - Uso de `react-toastify` para mostrar mensajes de confirmación o alerta.  
+- **Diseño adaptable**:  
+  - Los colores se muestran en una cuadrícula que se ajusta automáticamente al ancho disponible.  
+- **Identificadores únicos**:  
+  - Cada color guardado tiene un `id` generado con `crypto.randomUUID()` para su correcta gestión.
+
+---
+
+## ✅ Comportamiento esperado
+
+- Cada nuevo color debe generarse de forma completamente aleatoria.  
+- No se deben guardar duplicados de forma consecutiva (opcional).  
+- Al copiar un color, debe mostrarse una notificación visual inmediata.  
+- Al eliminar un color, este desaparece de la interfaz sin necesidad de recargar.  
+- Si `localStorage` no está disponible, la app sigue funcionando en memoria.
+
+---
+
+## 📁 Estructura del proyecto
+
+Este proyecto utiliza la plantilla estándar de Vite con React y TypeScript.  
+Los archivos principales son:
+
+- `src/App.tsx`: Componente principal que gestiona la generación, copia y eliminación de colores.  
+- `src/App.css`: Estilos generales del proyecto.  
+- `src/main.tsx`: Punto de entrada de la aplicación.  
+- Archivos de configuración (`index.html`, `vite.config.ts`, `tsconfig.json`, etc.) estándar de Vite y TypeScript.
+
+## 🛠️ Instalación y ejecución
+
+Para correr este proyecto localmente:
+
+1. **Instalación de dependencias**
+
+   Ejecuta el siguiente comando en la terminal:
+
+```powershell
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Modo desarrollo**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Para iniciar la aplicación en modo desarrollo:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+npm run dev
 ```
+
+3. **Compilación para producción**
+
+Para generar una versión optimizada:
+
+```powershell
+npm run build
+```
+
+4. **Vista previa del build**
+
+Para ver la aplicación compilada en producción localmente:
+
+```powershell
+npm run preview
+```
+
+## 🌐 Acceso a la aplicación
+
+Una vez iniciada en modo desarrollo, la aplicación estará disponible normalmente en:
+
+[http://localhost:5173](http://localhost:5173)
